@@ -14,8 +14,8 @@
     <body class="pt-5">
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <a class="navbar-brand text-uppercase" href="#">
             <img src="{% static 'main/ipn.png'%}" width="25" height="30" class="d-inline-block align-top" alt="">
             Gestión Empresarial
         </a>
@@ -25,19 +25,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item text-uppercase active">
                     <a class="nav-link" href="{% url 'main' %}">Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-uppercase">
                     <a class="nav-link" href="#">Recursos</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item text-uppercase dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Unidades
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for unit in units %}
-                            <a class="dropdown-item" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
+                        {% for unit in units %} 
+                            <a class="dropdown-item {% if this_unit.name == unit.name %} font-weight-bold {% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
                         {% endfor %}
                     </div>
                 </li>
@@ -51,3 +51,12 @@
     {% endblock %}
     </body>
 </html>
+
+<!-- TODO -->
+<style type="text/css">
+    .navbar-light {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        filter: drop-shadow(1px 2px 3px white);
+    }
+</style>
