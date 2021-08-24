@@ -6,22 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0001_initial'),
+        ("gestion", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='subunit',
-            options={'ordering': ('order',)},
+            name="subunit",
+            options={"ordering": ("order",)},
         ),
         migrations.AlterField(
-            model_name='subunit',
-            name='order',
-            field=models.PositiveIntegerField(help_text='Índice de la unidad (usado para ordenar cada unidad).', unique=True),
+            model_name="subunit",
+            name="order",
+            field=models.PositiveIntegerField(
+                help_text="Índice de la unidad (usado para ordenar cada unidad).", unique=True
+            ),
         ),
         migrations.AlterField(
-            model_name='unit',
-            name='order',
-            field=models.PositiveIntegerField(help_text='Índice de la unidad (usado para ordenar cada unidad).', unique=True),
+            model_name="unit",
+            name="order",
+            field=models.PositiveIntegerField(
+                help_text="Índice de la unidad (usado para ordenar cada unidad).", unique=True
+            ),
         ),
     ]

@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "id",
-                    models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
                 ),
                 ("name", models.CharField(help_text="Nombre de la unidad.", max_length=50)),
                 (
@@ -39,7 +41,9 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "id",
-                    models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
                 ),
                 ("name", models.CharField(help_text="Nombre de la unidad.", max_length=50)),
                 (
@@ -51,7 +55,9 @@ class Migration(migrations.Migration):
                 ("contents", models.TextField(help_text="Contenidos (html).", max_length=100000)),
                 (
                     "order_as_str",
-                    models.CharField(help_text="Índice a mostrar en el sitio (Ej: 1.2.3).", max_length=10, unique=True),
+                    models.CharField(
+                        help_text="Índice a mostrar en el sitio (Ej: 1.2.3).", max_length=10, unique=True
+                    ),
                 ),
                 (
                     "parent",
