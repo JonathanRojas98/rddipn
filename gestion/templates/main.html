@@ -15,7 +15,7 @@
 
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand text-uppercase" href="#">
+        <a class="navbar-brand text-uppercase" href="{% url 'main' %}">
             <img src="{% static 'main/ipn.png'%}" width="25" height="30" class="d-inline-block align-top" alt="">
             Gestión Empresarial
         </a>
@@ -25,22 +25,24 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item text-uppercase active">
-                    <a class="nav-link" href="{% url 'main' %}">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item text-uppercase">
-                    <a class="nav-link" href="#">Recursos</a>
-                </li>
-                <li class="nav-item text-uppercase dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Unidades
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for unit in units %} 
-                            <a class="dropdown-item {% if this_unit.name == unit.name %} font-weight-bold {% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
-                        {% endfor %}
-                    </div>
-                </li>
+                {% with request.resolver_match.url_name as url_name %}
+                    <li class="nav-item text-uppercase {% if url_name == 'main' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'main' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item text-uppercase">
+                        <a class="nav-link" href="#">Recursos</a>
+                    </li>
+                    <li class="nav-item text-uppercase dropdown {% if url_name == 'unit' %}active{% endif %}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Unidades
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for unit in units %} 
+                                <a class="dropdown-item {% if this_unit.name == unit.name %} font-weight-bold {% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endwith %}
             </ul>
         </div>
         <span class="navbar-text">
