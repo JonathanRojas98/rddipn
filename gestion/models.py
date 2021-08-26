@@ -1,3 +1,4 @@
+from colorfield.fields import ColorField
 from django.db import models
 
 
@@ -24,6 +25,8 @@ class Unit(BaseUnit):
     goal = models.CharField(
         max_length=200, default="Ejemplo", help_text="Objetivo de la materia.", verbose_name="Objetivo"
     )
+
+    header_color = ColorField(default='#000000', help_text="Color de la barra principal.")
 
     def __str__(self):
         return self.name

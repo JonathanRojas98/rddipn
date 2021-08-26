@@ -1,24 +1,25 @@
 {% extends 'main.html' %}
 {% block content %}
-	<div class="col mx-0 border-left p-3">
-    	<div>
-            <div class="bg-primary text-white p-1 text-center">
-				<br><h2> Unidad {{ this_unit.order }}</h2>
-            </div>
-            <div class="bg-light p-4">
+	<div style="padding-top: 14px;">
+        <div class="text-white text-center mx-auto p-2 bg-gradient border border-dark" style="background-color: {{ this_unit.header_color }};">
+			<h2 style="margin-bottom: 0"> Unidad {{ this_unit.order }}</h2>
+        </div>
+
+        <div class="col p-3">
+            <div class="bg-light p-4 rounded border_acccent soft_accent">
                 <h2 id="objetivo">Objetivo</h2>
                 <p>
                 	{{ this_unit.goal }}
                 </p>
             </div>
             <div class="p-4">
-                <h2>Contenidos</h2>
+                <h6>Esta unidad consta de {{ subunits | length}} subunidad(es). Haga click en una sección para revelar sus contenidos.</h6>
             </div>
             <!-- Contenido -->
             <div id="accordion">
                 <div class="card">
                     {% for item in subunits %}
-                    <div class="card-header" id="heading_{{item.order}}">
+                    <div class="card-header softer_accent" id="heading_{{item.order}}">
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{item.order}}"
                                 aria-expanded="true" aria-controls="collapse_{{item.order}}">
@@ -28,8 +29,10 @@
                     </div>
 
                     <div id="collapse_{{item.order}}" class="collapse multi-collapse" aria-labelledby="heading_{{item.order}}">
-                        <div class="card-body">
-                            <p>{{item.contents | safe}}</p>
+                        <div class="card-body p-4">
+                            <div class="d-flex flex-column justify-content-start">
+                                {{item.contents | safe}}
+                            </div>
                         </div>
                     </div>
                     {% endfor %}
@@ -38,3 +41,21 @@
         </div>
     </div>
 {% endblock %}
+{% block extra_css%}
+<style type="text/css">
+    .border_accent {
+        border: 1px solid {{ this_unit.header_color  }} !important;
+    }
+
+    /* Soft accent color 18%*/
+    .soft_accent{
+        background: {{ this_unit.header_color  }}2f !important;
+    }
+
+    /* Even softer, around 6% opacity */
+    .softer_accent{
+        background: {{ this_unit.header_color  }}10 !important;
+    }
+
+</style>
+{% endblock%}
