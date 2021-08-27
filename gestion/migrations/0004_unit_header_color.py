@@ -7,13 +7,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0003_auto_20210826_1943'),
+        ("gestion", "0003_auto_20210826_1943"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='unit',
-            name='header_color',
-            field=colorfield.fields.ColorField(default='#000000', help_text='Color de la barra principal.', max_length=18),
+            model_name="unit",
+            name="header_color",
+            field=colorfield.fields.ColorField(
+                default="#000000", help_text="Color de la barra principal.", max_length=18
+            ),
         ),
     ]

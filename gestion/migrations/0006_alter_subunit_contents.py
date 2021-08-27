@@ -7,13 +7,13 @@ import tinymce.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0005_subunit_keywords'),
+        ("gestion", "0005_subunit_keywords"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='subunit',
-            name='contents',
+            model_name="subunit",
+            name="contents",
             field=tinymce.models.HTMLField(),
         ),
     ]

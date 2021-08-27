@@ -27,7 +27,7 @@ class Unit(BaseUnit):
         max_length=200, default="Ejemplo", help_text="Objetivo de la materia.", verbose_name="Objetivo"
     )
 
-    header_color = ColorField(default='#000000', help_text="Color de la barra principal.")
+    header_color = ColorField(default="#000000", help_text="Color de la barra principal.")
 
     def __str__(self):
         return self.name
@@ -46,7 +46,9 @@ class SubUnit(BaseUnit):
     )
     contents = HTMLField(help_text="Contenidos de esta subunidad.")
 
-    keywords = models.TextField(max_length=1000, help_text="Palabras clave (opcionales).", blank=True, null=True)
+    keywords = models.TextField(
+        max_length=1000, help_text="Palabras clave (opcionales).", blank=True, null=True
+    )
 
     order_as_str = models.CharField(
         max_length=10,
