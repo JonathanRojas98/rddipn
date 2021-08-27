@@ -26,13 +26,13 @@
                                     {{item.order_as_str}} {{item.name}}
                                 </button>
                                 {% if item.keywords %}
-                                    <h6 class="card-subtitle ml-3 text-muted">Palabras clave: {{ item.keywords }}</h6>
+                                    <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
                                 {% endif %}
                         </div>
 
                         <div id="collapse_{{item.order}}" class="collapse multi-collapse" aria-labelledby="heading_{{item.order}}">
                             <div class="card-body p-4">
-                                <div class="d-flex flex-column justify-content-start">
+                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
                                     {{item.contents | safe}}
                                 </div>
                             </div>

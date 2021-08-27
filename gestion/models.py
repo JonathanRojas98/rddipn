@@ -1,5 +1,6 @@
 from colorfield.fields import ColorField
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class BaseUnit(models.Model):
@@ -43,7 +44,7 @@ class SubUnit(BaseUnit):
         help_text="Sección padre de esta subunidad.",
         verbose_name="Sección padre",
     )
-    contents = models.TextField(max_length=100000, help_text="Contenidos (html).")
+    contents = HTMLField(help_text="Contenidos de esta subunidad.")
 
     keywords = models.TextField(max_length=1000, help_text="Palabras clave (opcionales).", blank=True, null=True)
 
