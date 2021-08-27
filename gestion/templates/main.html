@@ -14,7 +14,7 @@
     <body class="pt-5">
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light">
         <a class="navbar-brand text-uppercase" href="{% url 'main' %}">
             <img src="{% static 'main/ipn.png'%}" width="25" height="30" class="d-inline-block align-top" alt="">
             Gestión Empresarial
@@ -45,9 +45,9 @@
                 {% endwith %}
             </ul>
         </div>
-        <span class="navbar-text">
+        <a class="navbar-brand d-none d-md-block" href="{% url 'main' %}">
             <img src="{% static 'main/escom.png'%}" width="50" height="30" class="d-inline-block align-top" alt="">
-        </span>
+        </a>
     </nav>
     {% block content %}
     {% endblock %}

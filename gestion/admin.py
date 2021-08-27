@@ -6,9 +6,9 @@ from .models import *
 class SubUnitAdmin(admin.ModelAdmin):
     list_display = (
         "order",
-        "parent",
-        "order_as_str",
         "name",
+        "order_as_str",
+        "parent",
     )
 
 
