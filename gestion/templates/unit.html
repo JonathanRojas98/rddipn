@@ -48,11 +48,9 @@
     .border_accent, {
         border: 1px solid {{ this_unit.header_color  }} !important;
     }
-
     .btn-link {
         color: {{ this_unit.header_color  }};
     }
-
     /* Radial effects so that it doesn't look like garbage */
     .soft_accent{
         background: repeating-radial-gradient(
@@ -62,13 +60,10 @@
             {{ this_unit.header_color  }}10 10px,
             {{ this_unit.header_color  }}10 20px
         );
-        /*background: {{ this_unit.header_color  }}2f !important;*/
     }
-
     /* Even softer, around 6% opacity */
     .softer_accent{
         background: {{ this_unit.header_color  }}10 !important;
     }
-
 </style>
 {% endblock%}
