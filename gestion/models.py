@@ -44,6 +44,9 @@ class SubUnit(BaseUnit):
         verbose_name="Sección padre",
     )
     contents = models.TextField(max_length=100000, help_text="Contenidos (html).")
+
+    keywords = models.TextField(max_length=1000, help_text="Palabras clave (opcionales).", blank=True, null=True)
+
     order_as_str = models.CharField(
         max_length=10,
         unique=True,

@@ -1,56 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-        <title>Gestión Empresarial</title>
-    </head>
-    <body class="mainbody">
-
-    <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-md navbar-light">
-        <a class="navbar-brand text-uppercase" href="{% url 'main' %}">
-            <img src="{% static 'main/ipn.png'%}" width="25" height="30" class="d-inline-block align-top" alt="">
-            Gestión Empresarial
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {% with request.resolver_match.url_name as url_name %}
-                    <li class="nav-item text-uppercase {% if url_name == 'main' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'main' %}">Inicio</a>
-                    </li>
-                    <li class="nav-item text-uppercase">
-                        <a class="nav-link" href="#">Recursos</a>
-                    </li>
-                    <li class="nav-item text-uppercase dropdown {% if url_name == 'unit' %}active{% endif %}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Unidades
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for unit in units %} 
-                                <a class="dropdown-item {% if this_unit.name == unit.name %} font-weight-bold {% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
-                {% endwith %}
-            </ul>
-        </div>
-        <a class="navbar-brand d-none d-md-block" href="{% url 'main' %}">
-            <img src="{% static 'main/escom.png'%}" width="50" height="30" class="d-inline-block align-top" alt="">
-        </a>
-    </nav>
-    {% block content %}
-
+{% block content %}
     <div class="container-fluid min-vh-100 text-white">
         <div class="d-flex row justify-content-center align-items-center min-vh-100">
             <div class="d-flex flex-column w-100">
@@ -98,28 +48,14 @@
             </div>
         </div>
     </div>
-
-    {% endblock %}
-    </body>
-</html>
-
-<!-- TODO -->
-<style type="text/css">
-    .navbar-light {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
-        filter: drop-shadow(1px 2px 3px white);
-    }
-    
-</style>
-
-
-{% block extra_css %}
+{% endblock %}
+{% block extra_css%}
 <style>
-    .mainbody {
-        height: 100%;
-        background: url("{% static 'main/background1.png'%}");
+    body {
+		height: 100%;
+		background-color: grey;
+        /*background: url("{% static 'main/background1.png'%}") !important;*/
         background-size: auto;
     }
 </style>
-{% endblock extra_css %}
+{% endblock%}
