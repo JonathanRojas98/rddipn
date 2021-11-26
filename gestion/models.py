@@ -59,3 +59,30 @@ class SubUnit(BaseUnit):
 
     def __str__(self):
         return f"{self.order_as_str}: {self.name}"
+
+class UnitResource(BaseUnit):
+    class Meta:
+        ordering = ("order",)
+
+    parent = models.ForeignKey(
+        Unit,
+        on_delete=models.CASCADE,
+        related_name="ResourceUnit",
+        help_text="Sección padre de este recurso.",
+        verbose_name="Sección padre",
+    )
+    contents = models.TextField(help_text="Contenidos (HTML) para este recurso.", max_length=1000)
+
+    subtitle = models.TextField(
+        max_length=1000, help_text="Subtítulo, opcional.", blank=True, null=True
+    )
+
+    order_as_str = models.CharField(
+        max_length=10,
+        unique=True,
+        help_text="Índice a mostrar en el sitio (Ej: 1.2.3).",
+        verbose_name="Índice (temario)",
+    )
+
+    def __str__(self):
+        return f"{self.order_as_str}: {self.name}"

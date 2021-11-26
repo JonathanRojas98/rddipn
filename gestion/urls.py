@@ -7,7 +7,8 @@ from gestion import views
 urlpatterns = [
 	path("", views.main, name="main"),
     path('tinymce/', include('tinymce.urls')),
-	path("<int:order>/", views.unit, name="unit")
+	path("<int:order>/", views.unit, name="unit"),
+	path("resource/<int:order>/", views.resource, name="resource")
 ]
 # fmt: on
 

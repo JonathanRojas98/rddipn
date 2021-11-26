@@ -19,3 +19,11 @@ class UnitAdmin(admin.ModelAdmin):
         "name",
         "goal",
     )
+
+@admin.register(UnitResource)
+class UnitResourceAdmin(admin.ModelAdmin):
+    list_display = (
+        "order",
+        "name",
+        "subtitle"
+    )
