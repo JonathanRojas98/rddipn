@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid" style="padding-top: 10px;">
     <div class="d-flex row p-5 text-white bg-info" id="bienvenida" style="align-items: center;">
         <div class="p-3 col-sm">
             <h1 class="pb-4">Bienvenidos</h1>
@@ -18,32 +18,6 @@
     </div>
 
 </div>
-<nav class="navbar navbar-dark bg-dark text-white sticky-top navbar-expand-lg" style="top: 56px;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <h4><a class="nav-link" href="#metodologia">Metodología<span class="sr-only">(current)</span></a></h4>
-            </li>
-            <li class="nav-item">
-                <h4><a class="nav-link" href="#ucompetencia">Unidad de competencia<span class="sr-only">(current)</span></a></h4>
-            </li>
-            <li class="nav-item">
-                <h4><a class="nav-link" href="#evaluacion">Evaluaci&oacute;n<span class="sr-only">(current)</span></a></h4>
-            </li>
-            <li class="nav-item">
-                <h4><a class="nav-link" href="#contactos">Contactos<span class="sr-only">(current)</span></a></h4>
-            </li>
-            <li class="nav-item">
-                <h4><a class="nav-link" href="#requerimientos">Requerimientos<span class="sr-only">(current)</span></a></h4>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div class="container-fluid">
     <div class="starter-template bg-white">
         <a class="anchor" id="metodologia"></a>
@@ -113,49 +87,48 @@
         <div class="d-flex row px-5 pb-5" style="background-color: #e3f2fd;">
 
             <div class="col-sm justify-content-center text-center ">
-                <h4>Rocío Palacios Solano</h4>
+                <h4>Rocío Palacios Solano</h4><br/>
                 <img src="{% static 'main/rocio.png'%}" width="200" class="img-fluid" alt="">
                 <p class="pt-3">
+                    Docente en ESCOM <br/>
                     rpalacioss@ipn.mx <br/>
-                    Ext. 52032
+                    Ext. 52032 <br/>
+                    Project Manager en IPN <br/>
+                </p>
+                <p class="pt-3">
+                    Áreas de interes: Administración de Proyectos PMI, Gobernanza IT, Seguridad de la Información, Desarrollo de aplicaciones.  <br/>
                 </p>
             </div>
             <div class="col-sm justify-content-center text-center">
-                <h4>Verónica Agustín Domínguez</h4>
+                <h4>Verónica Agustín Domínguez</h4><br/>
                 <img src="{% static 'main/veronica.png'%}" width="200" class="img-fluid" alt="">
                 <p class="pt-3">
+                    ESCOM-IPN  Depto. de ISC profesora titular desde 2009. <br/>
                     vaguistin@ipn.mx <br/>
-                    Ext. 52032
+                    Ext. 52032 <br/>
+                    Mtra. ESCA Sto. Tomas IPN 
+                </p>
+                <p class="pt-3">
+                    Áreas de interés: Gestión Empresarial, Desarrollo de Proyectos, Educación mejora continua, Emprendimiento. 
                 </p>
                 
             </div>
             <div class="col-sm justify-content-center text-center">
-                <h4>Axel Ernesto Moreno Cervantes</h4>
+                <h4>Axel Ernesto Moreno Cervantes</h4><br/>
                 <img src="{% static 'main/axel.png'%}" width="200"  class="img-fluid " alt="">
                 <p class="pt-3">
+                    Doctor en Educación (CUGS) en 2020. <br/>
+                    M. en C. (CINVESTAV) en 2004. <br/>
+                    Ingeniero en Sistemas Computacionales (ESCOM-IPN) en 2000.  <br/>
+                    Profesor del Depto ISC (ESCOM-IPN) desde 2004.  <br/>
                     axelernesto@gmail.com <br/>
                     Ext. 52032
                 </p>
-            </div>
-        </div>
-        <a class="anchor" id="requerimientos"></a>
-        <div class="d-flex row px-5 pt-5 bg-primary text-white" style="align-items: center;">
-            <div class="p-3 col-sm">
-                <h1 class="pb-4">Requerimientos</h1>
-                <p class="pt-1">
-                    Para poder acceder a este recurso, se requiere una computadora o dispositivo móvil con conexión a internet, y un navegador web.
-
-                    Algunos navegadores recomendados son las versiones más recientes de los siguientes:
+                <p class="pt-3">
+                    Áreas de interés: Sistemas distribuidos, educación. 
                 </p>
-                <ul>
-                    <li>Google Chrome</li>
-                    <li>Microsoft Edge</li>
-                    <li>Mozilla Firefox</li>
-                    <li>Opera</li>
-                </ul>
             </div>
         </div>
-
     </div>
 
 </div>
