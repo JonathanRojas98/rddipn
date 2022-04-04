@@ -71,6 +71,7 @@ class UnitResource(BaseUnit):
         help_text="Sección padre de este recurso.",
         verbose_name="Sección padre",
     )
+
     contents = models.TextField(help_text="Contenidos (HTML) para este recurso.", max_length=1000)
 
     subtitle = models.TextField(
@@ -86,3 +87,42 @@ class UnitResource(BaseUnit):
 
     def __str__(self):
         return f"{self.order_as_str}: {self.name}"
+
+
+class Glossary(models.Model):
+    class Meta:
+        ordering = ("term", )
+        verbose_name_plural = "Glossary terms"
+
+
+    parent = models.ForeignKey(
+        Unit,
+        on_delete=models.CASCADE,
+        help_text="Sección padre de este término.",
+        verbose_name="Sección padre",
+    )
+
+    term = models.CharField(help_text="Término.", max_length=100)
+    
+    description = HTMLField(
+        help_text="Descripción de este término.",
+    )
+
+class InfoResource(models.Model):
+    # This kind of 'resource' is different from the other one - UnitResource.
+    # This model will contain mostly links, APA or IEEE references, not videos,
+    # or embeddable content.
+    class Meta:
+        ordering = ("name", )
+
+
+    parent = models.ForeignKey(
+        Unit,
+        on_delete=models.CASCADE,
+        help_text="Sección padre de este recurso de información.",
+        verbose_name="Sección padre",
+    )
+
+    name = models.CharField(help_text="Nombre para este recurso de información.", max_length=100)
+
+    description = models.TextField(help_text="Referencia a este recurso de información.", max_length=300)

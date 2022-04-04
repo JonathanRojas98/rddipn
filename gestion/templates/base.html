@@ -34,7 +34,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for unit in units %} 
-                                <a class="dropdown-item {% if url_name == 'resource'%}{% if this_unit.name == unit.name %}font-weight-bold{% endif %}{% endif %}" href="{% url 'resource' unit.order %}">{{unit.order}}: {{unit.name}}</a>
+                                <a class="dropdown-item {% if url_name == 'resource'%}{% if this_unit.name == unit.name %}font-weight-bold{% endif %}{% endif %}" href="{% url 'resource' unit.order %}">{{unit.order}}: {{unit.name | truncatechars:40}}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -44,7 +44,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for unit in units %} 
-                                <a class="dropdown-item {% if url_name == 'unit'%}{% if this_unit.name == unit.name %}font-weight-bold{% endif %}{% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name}}</a>
+                                <a class="dropdown-item {% if url_name == 'unit'%}{% if this_unit.name == unit.name %}font-weight-bold{% endif %}{% endif %}" href="{% url 'unit' unit.order %}">{{unit.order}}: {{unit.name | truncatechars:40}}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -61,8 +61,8 @@
 </html>
 <style type="text/css">
     .navbar-light {
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
         filter: drop-shadow(1px 2px 3px white);
     }
 </style>
@@ -75,3 +75,5 @@
 
 {% block extra_css %}
 {% endblock extra_css %}
+{% block extra_js %}
+{% endblock extra_js %}

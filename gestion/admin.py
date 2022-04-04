@@ -27,3 +27,19 @@ class UnitResourceAdmin(admin.ModelAdmin):
         "name",
         "subtitle"
     )
+
+@admin.register(Glossary)
+class GlossaryAdmin(admin.ModelAdmin):
+    list_display = (
+        "term",
+        "parent"
+    )
+    
+@admin.register(InfoResource)
+class InfoResourceAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "parent"
+    )
+
+

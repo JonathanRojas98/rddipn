@@ -5,7 +5,7 @@
 			<h2 style="margin-bottom: 0"> {{this_unit.name}}</h2>
         </div>
 
-        <div class="col col-md-10 p-3 mx-auto">
+        <div class="col col-md-11 p-3 mx-auto">
 
             <div class="bg-light p-4 rounded border border_acccent soft_accent">
                 <h2 id="objetivo">Objetivo</h2>
@@ -16,29 +16,94 @@
             <div class="p-4">
                 <h6>Esta unidad consta de {{ subunits | length}} subtema(s). Haga click en una sección para revelar sus contenidos.</h6>
             </div>
-            <!-- Contenido -->
-            <div>
-                {% for item in subunits %}
-                    <div class="card mb-3">
-                        <div class="card-header softer_accent" id="heading_{{item.order}}">
-                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapse_{{item.order}}"
-                                    aria-expanded="true" aria-controls="collapse_{{item.order}}">
-                                    {{item.order_as_str}} {{item.name}}
-                                </button>
-                                {% if item.keywords %}
-                                    <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
-                                {% endif %}
-                        </div>
-
-                        <div id="collapse_{{item.order}}" class="collapse multi-collapse" aria-labelledby="heading_{{item.order}}">
-                            <div class="card-body p-4">
-                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
-                                    {{item.contents | safe}}
-                                </div>
+            <!-- Contents -->
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="main-contents" data-toggle="pill" href="#v-main-contents" role="tab" aria-controls="v-main-contents" aria-selected="true">Contenidos</a>
+                        <a class="nav-link" id="glossary-contents" data-toggle="pill" href="#v-glossary-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Glosario</a>
+                        <a class="nav-link" id="resource-contents" data-toggle="pill" href="#v-resource-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Fuentes de consulta</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-10">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <!-- Content sub-section -->
+                        <div class="tab-pane fade show active" id="v-main-contents" role="tabpanel" aria-labelledby="main-contents">
+                            <div>
+                                {% for item in subunits %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="heading_{{item.order}}">
+                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapse_{{item.order}}"
+                                                    aria-expanded="true" aria-controls="collapse_{{item.order}}">
+                                                    {{item.order_as_str}} {{item.name}}
+                                                </button>
+                                                {% if item.keywords %}
+                                                    <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
+                                                {% endif %}
+                                        </div>
+                
+                                        <div id="collapse_{{item.order}}" class="collapse multi-collapse" aria-labelledby="heading_{{item.order}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    {{item.contents | safe}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
+                        <!-- Content sub-section end -->
+                        <!-- Content sub-section (glossary) start-->
+                        <div class="tab-pane fade show " id="v-glossary-contents" role="tabpanel" aria-labelledby="glossary-contents">
+                            <div>
+                                {% for item in glossary %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
+                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#glossary_collapse_{{item.pk}}"
+                                                    aria-expanded="true" aria-controls="glossary_collapse_{{item.pk}}">
+                                                    {{item.term}}
+                                                </button>
+                                        </div>
+                
+                                        <div id="glossary_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    {{item.description | safe}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Content sub-section (glossary) end -->
+                        <!-- Content sub-section (infoResource) start-->
+                        <div class="tab-pane fade show " id="v-resource-contents" role="tabpanel" aria-labelledby="resource-contents">
+                            <div>
+                                {% for item in resources %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
+                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#resource_collapse_{{item.pk}}"
+                                                    aria-expanded="true" aria-controls="resource_collapse_{{item.pk}}">
+                                                    {{item.name}}
+                                                </button>
+                                        </div>
+                
+                                        <div id="resource_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    {{item.description | safe}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Content sub-section (infoResource) end -->
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>
@@ -48,6 +113,11 @@
     .border_accent, {
         border: 1px solid {{ this_unit.header_color  }} !important;
     }
+    /* Side-bar active color */
+    .nav-pills .nav-link.active, .nav-pills .show >.nav-link {
+        background-color: {{ this_unit.header_color  }};
+    }
+    /* Cards link color */
     .btn-link {
         color: {{ this_unit.header_color  }};
     }
