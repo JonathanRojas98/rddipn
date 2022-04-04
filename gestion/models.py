@@ -12,7 +12,7 @@ class BaseUnit(models.Model):
         abstract = True
 
     name = models.CharField(
-        max_length=50, help_text="Nombre de la unidad.", verbose_name="Nombre de la unidad"
+        max_length=100, help_text="Nombre de la unidad.", verbose_name="Nombre de la unidad"
     )
     order = models.PositiveIntegerField(
         unique=True, help_text="Índice de la unidad (usado para ordenar cada unidad).", verbose_name="Índice"
