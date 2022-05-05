@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+	<div style="padding-top: 10px;">
+        <div class="text-white text-center mx-auto p-2 bg-gradient border border-dark" style="background-color: black;">
+			<h2 style="margin-bottom: 0"> Recursos generales</h2>
+        </div>
+
+        <div class="col col-md-11 p-3 mx-auto">
+
+            <div class="bg-light p-4 rounded border border_acccent soft_accent">
+                <h2>Recursos generales de la materia</h2>
+            </div>
+            <div class="p-4">
+                <h6>Aquí encontrarás las fuentes de consulta y glosario para todos los temas de la materia.</h6>
+            </div>
+            <!-- Contents -->
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="glossary-contents" data-toggle="pill" href="#v-glossary-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Glosario</a>
+                        <a class="nav-link" id="resource-contents" data-toggle="pill" href="#v-resource-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Fuentes de consulta</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-10">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <!-- Content sub-section (glossary) start-->
+                        <div class="tab-pane fade show active" id="v-glossary-contents" role="tabpanel" aria-labelledby="glossary-contents">
+                            <div>
+                                {% for item in glossary %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
+                                            <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#glossary_collapse_{{item.pk}}"
+                                                aria-expanded="true" aria-controls="glossary_collapse_{{item.pk}}">
+                                                {{item.term}}
+                                            </button>
+                                        </div>
+                
+                                        <div id="glossary_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    {{item.description | safe}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Content sub-section (glossary) end -->
+                        <!-- Content sub-section (infoResource) start-->
+                        <div class="tab-pane fade show " id="v-resource-contents" role="tabpanel" aria-labelledby="resource-contents">
+                            <div>
+                                {% for item in resources %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
+                                            <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#resource_collapse_{{item.pk}}"
+                                                aria-expanded="true" aria-controls="resource_collapse_{{item.pk}}">
+                                                {{item.name}}
+                                            </button>
+                                        </div>
+                
+                                        <div id="resource_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    {{item.description | safe}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_css%}
+<style type="text/css">
+    .border_accent, {
+        border: 1px solid #000000 !important;
+    }
+    /* Side-bar active color */
+    .nav-pills .nav-link.active, .nav-pills .show >.nav-link {
+        background-color: #000000;
+    }
+    /* Cards link color */
+    .btn-link {
+        color: #000000;
+    }
+    /* Radial effects so that it doesn't look like garbage */
+    .soft_accent{
+        background: repeating-radial-gradient(
+            circle at -2%,
+            #0000002f,
+            #0000002f 10px,
+            #00000010 10px,
+            #00000010 20px
+        );
+    }
+    /* Even softer, around 6% opacity */
+    .softer_accent{
+        background: #00000010 !important;
+    }
+</style>
+{% endblock%}

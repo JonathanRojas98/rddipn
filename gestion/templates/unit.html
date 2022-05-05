@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 	<div style="padding-top: 10px;">
         <div class="text-white text-center mx-auto p-2 bg-gradient border border-dark" style="background-color: {{ this_unit.header_color }};">
 			<h2 style="margin-bottom: 0"> {{this_unit.name}}</h2>
@@ -21,8 +22,8 @@
                 <div class="col-12 col-md-2">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="main-contents" data-toggle="pill" href="#v-main-contents" role="tab" aria-controls="v-main-contents" aria-selected="true">Contenidos</a>
-                        <a class="nav-link" id="glossary-contents" data-toggle="pill" href="#v-glossary-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Glosario</a>
-                        <a class="nav-link" id="resource-contents" data-toggle="pill" href="#v-resource-contents" role="tab" aria-controls="v-glossary-contents" aria-selected="false">Fuentes de consulta</a>
+                        <a class="nav-link" id="selfassesment-contents" data-toggle="pill" href="#v-selfassessment-contents" role="tab" aria-controls="v-selfassessment-contents" aria-selected="false">Autoevaluación</a>
+                        <a class="nav-link" id="evaluation-contents" data-toggle="pill" href="#v-evaluation-contents" role="tab" aria-controls="v-evaluation-contents" aria-selected="false">Evaluación</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-10">
@@ -33,13 +34,13 @@
                                 {% for item in subunits %}
                                     <div class="card mb-3">
                                         <div class="card-header softer_accent" id="heading_{{item.order}}">
-                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapse_{{item.order}}"
-                                                    aria-expanded="true" aria-controls="collapse_{{item.order}}">
-                                                    {{item.order_as_str}} {{item.name}}
-                                                </button>
-                                                {% if item.keywords %}
-                                                    <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
-                                                {% endif %}
+                                            <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapse_{{item.order}}"
+                                                aria-expanded="true" aria-controls="collapse_{{item.order}}">
+                                                {{item.order_as_str}} {{item.name}}
+                                            </button>
+                                            {% if item.keywords %}
+                                                <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
+                                            {% endif %}
                                         </div>
                 
                                         <div id="collapse_{{item.order}}" class="collapse multi-collapse" aria-labelledby="heading_{{item.order}}">
@@ -54,54 +55,18 @@
                             </div>
                         </div>
                         <!-- Content sub-section end -->
-                        <!-- Content sub-section (glossary) start-->
-                        <div class="tab-pane fade show " id="v-glossary-contents" role="tabpanel" aria-labelledby="glossary-contents">
-                            <div>
-                                {% for item in glossary %}
-                                    <div class="card mb-3">
-                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
-                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#glossary_collapse_{{item.pk}}"
-                                                    aria-expanded="true" aria-controls="glossary_collapse_{{item.pk}}">
-                                                    {{item.term}}
-                                                </button>
-                                        </div>
-                
-                                        <div id="glossary_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
-                                                    {{item.description | safe}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                        <!-- Content sub-section (self-assesment) start-->
+                        <div class="tab-pane fade show " id="v-selfassessment-contents" role="tabpanel" aria-labelledby="selfassessment-contents">
+                            {{ this_unit.assessment_html | safe}}
+                            <!-- <div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"><iframe loading="lazy" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genial.ly/625af435f8dc320011f3709d" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe> </div> </div> -->
                         </div>
-                        <!-- Content sub-section (glossary) end -->
-                        <!-- Content sub-section (infoResource) start-->
-                        <div class="tab-pane fade show " id="v-resource-contents" role="tabpanel" aria-labelledby="resource-contents">
-                            <div>
-                                {% for item in resources %}
-                                    <div class="card mb-3">
-                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
-                                                <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#resource_collapse_{{item.pk}}"
-                                                    aria-expanded="true" aria-controls="resource_collapse_{{item.pk}}">
-                                                    {{item.name}}
-                                                </button>
-                                        </div>
-                
-                                        <div id="resource_collapse_{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
-                                                    {{item.description | safe}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                        <!-- Content sub-section (self-assesment) end -->
+                        <!-- Content sub-section (evaluation) start-->
+                        <div class="tab-pane fade show " id="v-evaluation-contents" role="tabpanel" aria-labelledby="evaluation-contents">
+                            <!-- <iframe loading="lazy" src="{% static 'main/eval.pdf'%}" width="100%" height="500px" frameborder="0"></iframe> -->
+                            {{ this_unit.assessment_resource | safe}}
                         </div>
-                        <!-- Content sub-section (infoResource) end -->
+                        <!-- Content sub-section (evaluation) end-->
                     </div>
                 </div>
             </div>

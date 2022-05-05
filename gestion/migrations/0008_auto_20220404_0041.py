@@ -6,23 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0007_auto_20211126_1537'),
+        ("gestion", "0007_auto_20211126_1537"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='subunit',
-            name='name',
-            field=models.CharField(help_text='Nombre de la unidad.', max_length=100, verbose_name='Nombre de la unidad'),
+            model_name="subunit",
+            name="name",
+            field=models.CharField(
+                help_text="Nombre de la unidad.",
+                max_length=100,
+                verbose_name="Nombre de la unidad",
+            ),
         ),
         migrations.AlterField(
-            model_name='unit',
-            name='name',
-            field=models.CharField(help_text='Nombre de la unidad.', max_length=100, verbose_name='Nombre de la unidad'),
+            model_name="unit",
+            name="name",
+            field=models.CharField(
+                help_text="Nombre de la unidad.",
+                max_length=100,
+                verbose_name="Nombre de la unidad",
+            ),
         ),
         migrations.AlterField(
-            model_name='unitresource',
-            name='name',
-            field=models.CharField(help_text='Nombre de la unidad.', max_length=100, verbose_name='Nombre de la unidad'),
+            model_name="unitresource",
+            name="name",
+            field=models.CharField(
+                help_text="Nombre de la unidad.",
+                max_length=100,
+                verbose_name="Nombre de la unidad",
+            ),
         ),
     ]

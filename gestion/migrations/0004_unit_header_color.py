@@ -15,7 +15,9 @@ class Migration(migrations.Migration):
             model_name="unit",
             name="header_color",
             field=colorfield.fields.ColorField(
-                default="#000000", help_text="Color de la barra principal.", max_length=18
+                default="#000000",
+                help_text="Color de la barra principal.",
+                max_length=18,
             ),
         ),
     ]

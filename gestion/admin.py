@@ -20,26 +20,17 @@ class UnitAdmin(admin.ModelAdmin):
         "goal",
     )
 
+
 @admin.register(UnitResource)
 class UnitResourceAdmin(admin.ModelAdmin):
-    list_display = (
-        "order",
-        "name",
-        "subtitle"
-    )
+    list_display = ("order", "name", "subtitle")
+
 
 @admin.register(Glossary)
 class GlossaryAdmin(admin.ModelAdmin):
-    list_display = (
-        "term",
-        "parent"
-    )
-    
+    list_display = ("term",)
+
+
 @admin.register(InfoResource)
 class InfoResourceAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "parent"
-    )
-
-
+    list_display = ("name",)

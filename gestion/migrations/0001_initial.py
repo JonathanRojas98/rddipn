@@ -17,19 +17,30 @@ class Migration(migrations.Migration):
                 (
                     "id",
                     models.BigAutoField(
-                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(help_text="Nombre de la unidad.", max_length=50)),
+                (
+                    "name",
+                    models.CharField(help_text="Nombre de la unidad.", max_length=50),
+                ),
                 (
                     "order",
                     models.PositiveIntegerField(
-                        help_text="Índice de la unidad (para ordenar, de manera interna).", unique=True
+                        help_text="Índice de la unidad (para ordenar, de manera interna).",
+                        unique=True,
                     ),
                 ),
                 (
                     "goal",
-                    models.CharField(default="Ejemplo", help_text="Objetivo de la materia.", max_length=200),
+                    models.CharField(
+                        default="Ejemplo",
+                        help_text="Objetivo de la materia.",
+                        max_length=200,
+                    ),
                 ),
             ],
             options={
@@ -42,21 +53,33 @@ class Migration(migrations.Migration):
                 (
                     "id",
                     models.BigAutoField(
-                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(help_text="Nombre de la unidad.", max_length=50)),
+                (
+                    "name",
+                    models.CharField(help_text="Nombre de la unidad.", max_length=50),
+                ),
                 (
                     "order",
                     models.PositiveIntegerField(
-                        help_text="Índice de la unidad (para ordenar, de manera interna).", unique=True
+                        help_text="Índice de la unidad (para ordenar, de manera interna).",
+                        unique=True,
                     ),
                 ),
-                ("contents", models.TextField(help_text="Contenidos (html).", max_length=100000)),
+                (
+                    "contents",
+                    models.TextField(help_text="Contenidos (html).", max_length=100000),
+                ),
                 (
                     "order_as_str",
                     models.CharField(
-                        help_text="Índice a mostrar en el sitio (Ej: 1.2.3).", max_length=10, unique=True
+                        help_text="Índice a mostrar en el sitio (Ej: 1.2.3).",
+                        max_length=10,
+                        unique=True,
                     ),
                 ),
                 (

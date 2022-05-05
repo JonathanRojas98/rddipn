@@ -7,13 +7,13 @@ import tinymce.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0011_auto_20220404_0221'),
+        ("gestion", "0011_auto_20220404_0221"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='glossary',
-            name='description',
-            field=tinymce.models.HTMLField(help_text='Descripción de este término.'),
+            model_name="glossary",
+            name="description",
+            field=tinymce.models.HTMLField(help_text="Descripción de este término."),
         ),
     ]

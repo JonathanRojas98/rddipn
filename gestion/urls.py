@@ -8,6 +8,7 @@ urlpatterns = [
 	path("", views.main, name="main"),
     path('tinymce/', include('tinymce.urls')),
 	path("<int:order>/", views.unit, name="unit"),
+	path("globalresources/", views.global_resources, name="globalresources"),
 	path("resource/<int:order>/", views.resource, name="resource")
 ]
 # fmt: on

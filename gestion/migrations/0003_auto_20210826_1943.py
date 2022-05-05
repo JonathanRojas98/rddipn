@@ -15,7 +15,9 @@ class Migration(migrations.Migration):
             model_name="subunit",
             name="name",
             field=models.CharField(
-                help_text="Nombre de la unidad.", max_length=50, verbose_name="Nombre de la unidad"
+                help_text="Nombre de la unidad.",
+                max_length=50,
+                verbose_name="Nombre de la unidad",
             ),
         ),
         migrations.AlterField(
@@ -62,7 +64,9 @@ class Migration(migrations.Migration):
             model_name="unit",
             name="name",
             field=models.CharField(
-                help_text="Nombre de la unidad.", max_length=50, verbose_name="Nombre de la unidad"
+                help_text="Nombre de la unidad.",
+                max_length=50,
+                verbose_name="Nombre de la unidad",
             ),
         ),
         migrations.AlterField(

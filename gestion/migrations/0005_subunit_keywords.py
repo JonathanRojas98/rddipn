@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
             model_name="subunit",
             name="keywords",
             field=models.TextField(
-                blank=True, help_text="Palabras clave (opcionales).", max_length=1000, null=True
+                blank=True,
+                help_text="Palabras clave (opcionales).",
+                max_length=1000,
+                null=True,
             ),
         ),
     ]

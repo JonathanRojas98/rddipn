@@ -18,14 +18,16 @@ class Migration(migrations.Migration):
             model_name="subunit",
             name="order",
             field=models.PositiveIntegerField(
-                help_text="Índice de la unidad (usado para ordenar cada unidad).", unique=True
+                help_text="Índice de la unidad (usado para ordenar cada unidad).",
+                unique=True,
             ),
         ),
         migrations.AlterField(
             model_name="unit",
             name="order",
             field=models.PositiveIntegerField(
-                help_text="Índice de la unidad (usado para ordenar cada unidad).", unique=True
+                help_text="Índice de la unidad (usado para ordenar cada unidad).",
+                unique=True,
             ),
         ),
     ]

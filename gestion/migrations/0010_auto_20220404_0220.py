@@ -6,17 +6,17 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0009_glossary_inforesource'),
+        ("gestion", "0009_glossary_inforesource"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='glossary',
-            options={'ordering': ('term',), 'verbose_name_plural': 'Glossary terms'},
+            name="glossary",
+            options={"ordering": ("term",), "verbose_name_plural": "Glossary terms"},
         ),
         migrations.RenameField(
-            model_name='glossary',
-            old_name='goal',
-            new_name='description',
+            model_name="glossary",
+            old_name="goal",
+            new_name="description",
         ),
     ]

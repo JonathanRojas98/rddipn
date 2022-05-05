@@ -7,31 +7,74 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gestion', '0008_auto_20220404_0041'),
+        ("gestion", "0008_auto_20220404_0041"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='InfoResource',
+            name="InfoResource",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('resource', models.TextField(help_text='Referencia a este recurso de información.', max_length=200)),
-                ('parent', models.ForeignKey(help_text='Sección padre de este recurso de información.', on_delete=django.db.models.deletion.CASCADE, to='gestion.unit', verbose_name='Sección padre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "resource",
+                    models.TextField(
+                        help_text="Referencia a este recurso de información.",
+                        max_length=200,
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        help_text="Sección padre de este recurso de información.",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="gestion.unit",
+                        verbose_name="Sección padre",
+                    ),
+                ),
             ],
             options={
-                'ordering': ('resource',),
+                "ordering": ("resource",),
             },
         ),
         migrations.CreateModel(
-            name='Glossary',
+            name="Glossary",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('term', models.TextField(help_text='Término.', max_length=100)),
-                ('goal', models.CharField(help_text='Descripción de este término.', max_length=300)),
-                ('parent', models.ForeignKey(help_text='Sección padre de este término.', on_delete=django.db.models.deletion.CASCADE, to='gestion.unit', verbose_name='Sección padre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("term", models.TextField(help_text="Término.", max_length=100)),
+                (
+                    "goal",
+                    models.CharField(
+                        help_text="Descripción de este término.", max_length=300
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        help_text="Sección padre de este término.",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="gestion.unit",
+                        verbose_name="Sección padre",
+                    ),
+                ),
             ],
             options={
-                'ordering': ('term',),
+                "ordering": ("term",),
             },
         ),
     ]
