@@ -34,3 +34,13 @@ class GlossaryAdmin(admin.ModelAdmin):
 @admin.register(InfoResource)
 class InfoResourceAdmin(admin.ModelAdmin):
     list_display = ("name",)
+
+
+@admin.register(SelfAssesmentResource)
+class SelfAssesmentResourceAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+
+
+@admin.register(ActivityResource)
+class ActivityResourceAdmin(admin.ModelAdmin):
+    list_display = ("name",)

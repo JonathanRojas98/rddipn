@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from gestion.models import SubUnit, Unit, UnitResource, Glossary, InfoResource
+from gestion.models import SubUnit, Unit, UnitResource, Glossary, InfoResource, SelfAssesmentResource, ActivityResource
 from django.http import Http404
 
 
@@ -24,6 +24,8 @@ def unit(request, order: int):
                 "this_unit": this_unit,
                 "units": Unit.objects.all(),
                 "subunits": SubUnit.objects.filter(parent=this_unit),
+                "activities": ActivityResource.objects.filter(parent=this_unit),
+                "assesmentresources": SelfAssesmentResource.objects.filter(parent=this_unit)
             },
         )
     raise Http404()

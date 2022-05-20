@@ -45,13 +45,6 @@ class Unit(BaseUnit):
         blank=True,
     )
 
-    assessment_resource = models.TextField(
-        help_text="HTML para la sección de evaluación (recurso).",
-        max_length=1000,
-        null=True,
-        blank=True,
-    )
-
     def __str__(self):
         return self.name
 
@@ -63,7 +56,6 @@ class SubUnit(BaseUnit):
     parent = models.ForeignKey(
         Unit,
         on_delete=models.CASCADE,
-        related_name="SubUnit",
         help_text="Sección padre de esta subunidad.",
         verbose_name="Sección padre",
     )
@@ -91,7 +83,6 @@ class UnitResource(BaseUnit):
     parent = models.ForeignKey(
         Unit,
         on_delete=models.CASCADE,
-        related_name="ResourceUnit",
         help_text="Sección padre de este recurso.",
         verbose_name="Sección padre",
     )
@@ -120,13 +111,6 @@ class Glossary(models.Model):
         ordering = ("term",)
         verbose_name_plural = "Glossary terms"
 
-    # parent = models.ForeignKey(
-    #     Unit,
-    #     on_delete=models.CASCADE,
-    #     help_text="Sección padre de este término.",
-    #     verbose_name="Sección padre",
-    # )
-
     term = models.CharField(help_text="Término.", max_length=100)
 
     description = HTMLField(
@@ -141,17 +125,48 @@ class InfoResource(models.Model):
     class Meta:
         ordering = ("name",)
 
-    # parent = models.ForeignKey(
-    #     Unit,
-    #     on_delete=models.CASCADE,
-    #     help_text="Sección padre de este recurso de información.",
-    #     verbose_name="Sección padre",
-    # )
-
     name = models.CharField(
         help_text="Nombre para este recurso de información.", max_length=100
-    )
+        )
 
     description = models.TextField(
         help_text="Referencia a este recurso de información.", max_length=300
     )
+
+
+class FileUnitResource(models.Model):
+    class Meta:
+        abstract = True
+        ordering = ("name",)
+
+    parent = models.ForeignKey(
+        Unit,
+        on_delete=models.CASCADE,
+        help_text="Sección padre de este recurso.",
+        verbose_name="Sección padre",
+    )
+
+    name = models.TextField(
+        help_text="Nombre para este recurso", max_length=100
+    )
+
+    contents = models.TextField(
+        help_text="Contenidos (HTML) para este recurso.", max_length=1000
+    )
+
+    file = models.FileField()
+
+    subtitle = models.TextField(
+        max_length=1000, help_text="Subtítulo, opcional.", blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class SelfAssesmentResource(FileUnitResource):
+    pass
+
+
+class ActivityResource(FileUnitResource):
+    pass

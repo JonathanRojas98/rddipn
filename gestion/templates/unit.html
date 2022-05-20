@@ -15,15 +15,16 @@
                 </p>
             </div>
             <div class="p-4">
-                <h6>Esta unidad consta de {{ subunits | length}} subtema(s). Haga click en una sección para revelar sus contenidos.</h6>
+                <h6>Esta unidad de competencia consta de {{ subunits | length}} subtema(s). Haga click en una sección para revelar sus contenidos.</h6>
             </div>
             <!-- Contents -->
             <div class="row">
                 <div class="col-12 col-md-2">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="main-contents" data-toggle="pill" href="#v-main-contents" role="tab" aria-controls="v-main-contents" aria-selected="true">Contenidos</a>
-                        <a class="nav-link" id="selfassesment-contents" data-toggle="pill" href="#v-selfassessment-contents" role="tab" aria-controls="v-selfassessment-contents" aria-selected="false">Autoevaluación</a>
-                        <a class="nav-link" id="evaluation-contents" data-toggle="pill" href="#v-evaluation-contents" role="tab" aria-controls="v-evaluation-contents" aria-selected="false">Evaluación</a>
+                        <a class="nav-link" id="per-unit-assesment" data-toggle="pill" href="#v-per-unit-assesment" role="tab" aria-controls="v-per-unit-assesment" aria-selected="false">Evaluación por unidades</a>
+                        <a class="nav-link" id="per-unit-activities" data-toggle="pill" href="#v-per-unit-activities" role="tab" aria-controls="v-per-unit-activities" aria-selected="false">Actividades</a>
+                        <a class="nav-link" id="self-assesment-contents" data-toggle="pill" href="#v-self-assesment-contents" role="tab" aria-controls="v-self-assesment-contents" aria-selected="false">Auto Evaluación</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-10">
@@ -36,7 +37,7 @@
                                         <div class="card-header softer_accent" id="heading_{{item.order}}">
                                             <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapse_{{item.order}}"
                                                 aria-expanded="true" aria-controls="collapse_{{item.order}}">
-                                                {{item.order_as_str}} {{item.name}}
+                                                {{item.order_as_str}} {{item.name }}
                                             </button>
                                             {% if item.keywords %}
                                                 <h6 class="card-subtitle ml-3 text-muted">Keywords: {{ item.keywords }}</h6>
@@ -56,15 +57,63 @@
                         </div>
                         <!-- Content sub-section end -->
                         <!-- Content sub-section (self-assesment) start-->
-                        <div class="tab-pane fade show " id="v-selfassessment-contents" role="tabpanel" aria-labelledby="selfassessment-contents">
-                            {{ this_unit.assessment_html | safe}}
-                            <!-- <div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"><iframe loading="lazy" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genial.ly/625af435f8dc320011f3709d" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe> </div> </div> -->
+                        <div class="tab-pane fade show " id="v-per-unit-assesment" role="tabpanel" aria-labelledby="per-unit-assesment">
+                            <div>
+                                {% for item in assesmentresources %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="activity_heading{{item.pk}}">
+                                            <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#assesment-colapse-{{item.pk}}"
+                                                aria-expanded="true" aria-controls="activity-colapse-{{item.pk}}">
+                                                {{item.name}}
+                                            </button>
+                                            {% if item.subtitle %}
+                                                <h6 class="card-subtitle ml-3 text-muted"> {{ item.subtitle }}</h6>
+                                            {% endif %}
+                                        </div>
+                
+                                        <div id="assesment-colapse-{{item.pk}}" class="collapse multi-collapse" aria-labelledby="activity_heading{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    <iframe loading="lazy" src="{{item.file.url}}" width="100%" height="500px" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                         <!-- Content sub-section (self-assesment) end -->
+                        <!-- Content sub-section (activities) start-->
+                        <div class="tab-pane fade show " id="v-per-unit-activities" role="tabpanel" aria-labelledby="per-unit-activities">
+                            <div>
+                                {% for item in activities %}
+                                    <div class="card mb-3">
+                                        <div class="card-header softer_accent" id="resource_heading_{{item.pk}}">
+                                            <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#activity-colapse-{{item.pk}}"
+                                                aria-expanded="true" aria-controls="activity-colapse-{{item.pk}}">
+                                                {{item.name}}
+                                            </button>
+                                            {% if item.subtitle %}
+                                                <h6 class="card-subtitle ml-3 text-muted"> {{ item.subtitle }}</h6>
+                                            {% endif %}
+                                        </div>
+                
+                                        <div id="activity-colapse-{{item.pk}}" class="collapse multi-collapse" aria-labelledby="resource_heading_{{item.pk}}">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex flex-column justify-content-start" id="internaldiv">
+                                                    <iframe loading="lazy" src="{{item.file.url}}" width="100%" height="500px" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Content sub-section (activities) end -->
                         <!-- Content sub-section (evaluation) start-->
-                        <div class="tab-pane fade show " id="v-evaluation-contents" role="tabpanel" aria-labelledby="evaluation-contents">
+                        <div class="tab-pane fade show " id="v-self-assesment-contents" role="tabpanel" aria-labelledby="self-assesment-contents">
                             <!-- <iframe loading="lazy" src="{% static 'main/eval.pdf'%}" width="100%" height="500px" frameborder="0"></iframe> -->
-                            {{ this_unit.assessment_resource | safe}}
+                            {{ this_unit.assessment_html | safe}}
                         </div>
                         <!-- Content sub-section (evaluation) end-->
                     </div>
